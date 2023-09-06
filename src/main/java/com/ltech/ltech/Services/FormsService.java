@@ -10,4 +10,6 @@ public interface FormsService {
     public ResponseDto getFormsAll();
     public ResponseDto getForm(Integer id);
     public ResponseDto addForm(FormsDto forms);
+    public ResponseDto updateForm(FormsDto forms);
+    public ResponseDto disableForm(Integer id);
 }

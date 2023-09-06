@@ -84,4 +84,36 @@ public class FormsServiceImp  implements FormsService{
             return Util.getResponse(false, Constante.OPERATION_FAILED, null);
         }
     }
+
+    @Override
+    public ResponseDto updateForm(FormsDto forms){
+        try{
+            FormsEntity formsEntity = formRep.findById(forms.getId()).orElse(null);
+            if(null == formsEntity){
+                return Util.getResponse(true, Constante.NO_RECORDS_FOUND, null);
+            }
+            formsEntity.setName(forms.getName());
+            formsEntity.setLastname(forms.getLastname());
+            formsEntity.setEmail(forms.getEmail());
+            formsEntity.setTelephone(forms.getTelephone());
+            formsEntity.setMessage(forms.getMessage());
+            formsEntity.setAttended(forms.getAttended());
+            formRep.save(formsEntity);
+            return Util.getResponse(true, Constante.OPERATION_SUCCESS, forms);
+        } catch(Exception e){
+            return Util.getResponse(false, Constante.OPERATION_FAILED, null);
+        }
+    }
+
+    @Override
+    public ResponseDto disableForm(Integer id){
+        try{
+            FormsEntity formsEntity = formRep.findById(id).orElse(null);
+            formsEntity.setAttended(true);
+            formRep.save(formsEntity);
+            return Util.getResponse(true, Constante.OPERATION_SUCCESS, null);
+        } catch(Exception e){
+            return Util.getResponse(false, Constante.OPERATION_FAILED, null);
+        }
+    }
 }
