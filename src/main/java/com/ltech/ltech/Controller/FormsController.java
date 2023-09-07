@@ -22,7 +22,7 @@ public class FormsController {
     }
 
     //Metodo para listar Formulario
-    @GetMapping("/getform/{}")
+    @GetMapping("/getform/{id}")
     public ResponseEntity<ResponseDto> readForm(@PathVariable("id") Integer id){
         return ResponseEntity.status(HttpStatus.OK).body(formServ.getForm(id));
     }
@@ -39,7 +39,7 @@ public class FormsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(formServ.updateForm(forms));
     }
 
-    @DeleteMapping("/disabledform")
+    @DeleteMapping("/disabledform/{id}")
     public ResponseEntity<ResponseDto> disabledForm(@PathVariable("id") Integer id){
         return ResponseEntity.status(HttpStatus.OK).body(formServ.disableForm(id));
     }
