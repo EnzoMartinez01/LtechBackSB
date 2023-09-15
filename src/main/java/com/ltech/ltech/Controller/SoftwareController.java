@@ -10,6 +10,7 @@ import com.ltech.ltech.Services.SoftwareService;
 
 @RestController
 @RequestMapping("/api/v1/ltech/software")
+@CrossOrigin("*")
 public class SoftwareController {
     @Autowired
     private SoftwareService softServ;

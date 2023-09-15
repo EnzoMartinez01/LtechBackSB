@@ -10,6 +10,7 @@ import com.ltech.ltech.Services.FormsService;
 
 @RestController
 @RequestMapping("/api/v1/ltech/forms")
+@CrossOrigin("*")
 public class FormsController {
 
     @Autowired
