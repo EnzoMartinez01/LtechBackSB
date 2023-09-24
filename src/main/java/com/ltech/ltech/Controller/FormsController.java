@@ -29,7 +29,7 @@ public class FormsController {
     }
 
     //Metodo para crear Formulario
-    @PostMapping("/createform")
+    @RequestMapping(value = "/createform", method = RequestMethod.POST)
     public ResponseEntity<ResponseDto> createForm(@RequestBody FormsDto forms){
         return ResponseEntity.status(HttpStatus.CREATED).body(formServ.addForm(forms));
     }
